@@ -1,0 +1,593 @@
+/* ==========================================================
+   VERIFY PAGE
+========================================================== */
+
+.customer-panel,
+.signature-panel,
+.analysis-panel{
+
+    background:rgba(30,41,59,.82);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:35px;
+
+    margin-bottom:35px;
+
+    backdrop-filter:blur(18px);
+
+}
+
+.customer-panel{
+
+    margin-top:40px;
+
+}
+
+.input-group{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:15px;
+
+}
+
+.input-group input{
+
+    flex:1;
+
+}
+
+
+.signature-panel h2{
+
+    margin-bottom:10px;
+
+}
+
+.signature-panel p{
+
+    color:var(--text-muted);
+
+    margin-bottom:20px;
+
+}
+
+#verifyCanvas{
+
+    display:block;
+
+    width:100%;
+
+    max-width:100%;
+
+    margin:30px auto;
+
+    background:#ffffff;
+
+    border-radius:20px;
+
+    border:2px dashed rgba(37,99,235,.35);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+}
+
+.result-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.result-table td{
+
+    padding:16px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.comparison-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.comparison-table th,
+.comparison-table td{
+
+    padding:14px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.meter{
+
+    width:100%;
+
+    height:8px;
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:100px;
+
+    overflow:hidden;
+
+    margin-top:8px;
+
+}
+
+.meter-fill{
+
+    height:100%;
+
+    width:0;
+
+    background:linear-gradient(90deg,#2563EB,#38BDF8);
+
+    transition:width .8s ease;
+
+}
+
+#pdfBtn{
+
+    margin-top:30px;
+
+    width:100%;
+
+}
+
+@media(max-width:900px){
+
+    .input-group{
+
+        flex-direction:column;
+
+    }
+
+}
+
+/* ==========================================================
+   CUSTOMER STATUS
+========================================================== */
+
+.customer-status-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin-top:30px;
+
+}
+
+.info-box{
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:22px;
+
+}
+
+.info-label{
+
+    display:block;
+
+    color:var(--text-muted);
+
+    font-size:14px;
+
+    margin-bottom:10px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+.info-box h3{
+
+    margin:0;
+
+    font-size:26px;
+
+}
+
+@media(max-width:768px){
+
+    .customer-status-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+/* ==========================================================
+   VERIFY BUTTONS
+========================================================== */
+
+.input-group button{
+
+    min-width:220px;
+
+}
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.buttons button{
+
+    min-width:240px;
+
+}
+
+/* ==========================================================
+   RESULT HEADER
+========================================================== */
+
+.result-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.decision-badge{
+
+    padding:12px 24px;
+
+    border-radius:100px;
+
+    font-weight:700;
+
+    background:#374151;
+
+    color:white;
+
+    min-width:180px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+/* ==========================================================
+   AI ANALYSIS GRID
+========================================================== */
+
+.analysis-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+    margin:30px 0;
+
+}
+
+.analysis-item{
+
+    padding:24px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+}
+
+.analysis-item span{
+
+    display:block;
+
+    color:var(--text-muted);
+
+    margin-bottom:10px;
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+}
+
+.analysis-item strong{
+
+    display:block;
+
+    font-size:26px;
+
+    margin-bottom:15px;
+
+}
+
+@media(max-width:900px){
+
+    .analysis-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.section-title{
+
+    margin:40px 0 20px;
+
+}
+
+.section-title p{
+
+    color:var(--text-muted);
+
+    margin-top:8px;
+
+}
+
+.comparison-table{
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+}
+
+.comparison-table thead{
+
+    background:rgba(37,99,235,.18);
+
+}
+
+.comparison-table th{
+
+    padding:18px;
+
+    text-align:left;
+
+}
+
+.comparison-table td{
+
+    padding:16px;
+
+}
+
+.comparison-table tbody tr:hover{
+
+    background:rgba(255,255,255,.03);
+
+}
+
+/* ==========================================================
+   AI EXPLANATION
+========================================================== */
+
+.analysis-card{
+
+    margin-top:35px;
+
+    padding:30px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+}
+
+.analysis-card ul{
+
+    margin-top:20px;
+
+    padding-left:20px;
+
+}
+
+.analysis-card li{
+
+    list-style:none;
+
+    margin-bottom:12px;
+
+    padding:14px 18px;
+
+    border-left:4px solid var(--accent);
+
+    background:rgba(255,255,255,.04);
+
+    border-radius:10px;
+
+    line-height:1.8;
+
+}
+
+/* ==========================================================
+   CHART
+========================================================== */
+
+.chart-card{
+
+    margin:35px 0;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+/* ==========================================================
+   PDF
+========================================================== */
+
+.pdf-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:40px;
+
+}
+
+#pdfBtn{
+
+    min-width:380px;
+
+}
+
+#comparisonTable{
+
+    margin-top:20px;
+
+}
+
+#comparisonTable tbody tr{
+
+    transition:.3s;
+
+}
+
+#comparisonTable tbody tr:hover{
+
+    background:rgba(56,189,248,.06);
+
+}
+
+/* ==========================================================
+   STATUS BADGES
+========================================================== */
+
+.status-badge{
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:100px;
+
+    font-weight:700;
+
+    font-size:13px;
+
+    min-width:95px;
+
+    text-align:center;
+
+}
+
+.status-badge.pass{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+.status-badge.close{
+
+    background:#ca8a04;
+
+    color:white;
+
+}
+
+.status-badge.fail{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+.status-badge:has-text("PASS"){
+
+    background:#16a34a;
+
+}
+
+.result-card{
+
+    animation:fadeUp .5s ease;
+
+}
+
+
+.customer-panel input{
+
+    width:100%;
+    height:56px;
+    padding:0 18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    color:white;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.customer-panel input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+
+

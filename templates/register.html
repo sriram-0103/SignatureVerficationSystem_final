@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Register Customer</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/modal.css') }}">
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/qr_modal.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ENROLLMENT HEADER -->
+
+<section class="workspace-header">
+
+    <div class="workspace-title">
+
+        <span class="workspace-tag">
+
+            CUSTOMER ENROLLMENT
+
+        </span>
+
+        <h1>
+
+            Register Customer
+
+        </h1>
+
+        <p>
+
+            Enroll a customer by capturing three reference signatures.
+            These signatures will be used by the AI model for future
+            forensic verification.
+
+        </p>
+
+    </div>
+
+    <div class="workspace-status">
+
+        <div class="status-card">
+
+            <span class="status-dot online"></span>
+
+            <div>
+
+                <strong>Enrollment Mode</strong>
+
+                <small>Ready</small>
+
+            </div>
+
+        </div>
+
+        <div class="status-card">
+
+            <span class="status-dot online"></span>
+
+            <div>
+
+                <strong>Required Samples</strong>
+
+                <small>3 Reference Signatures</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="form-card register-card">
+
+<div class="form-grid">
+
+    <div>
+
+        <label>
+
+            Customer Name
+
+        </label>
+
+        <input
+            type="text"
+            id="customerName"
+            placeholder="Enter Customer Name">
+
+    </div>
+
+    <div>
+
+        <label>
+
+            Account Number
+
+        </label>
+
+        <input
+            type="text"
+            id="accountNumber"
+            placeholder="Enter Account Number">
+
+    </div>
+
+</div>
+
+<div class="signature-enrollment">
+
+    <div class="enrollment-header">
+
+        <div>
+
+            <h3>Reference Signature Enrollment</h3>
+
+            <p>
+                Capture three reference signatures for AI training.
+            </p>
+
+        </div>
+
+        <div class="sample-status">
+
+            Sample
+            <span id="sampleCounter">1</span>
+            of 3
+
+        </div>
+
+    </div>
+
+    <div class="progress-track">
+
+        <div class="progress-fill" id="sampleProgress"></div>
+
+    </div>
+
+    <canvas
+        id="signatureCanvas"
+        width="700"
+        height="250">
+    </canvas>
+
+    
+
+    <div class="buttons">
+
+    <button
+        id="clearBtn"
+        class="secondary-btn">
+
+        Clear Signature
+
+    </button>
+
+    <button
+        id="mobilePadBtn"
+        class="secondary-btn">
+
+        📱 Use Mobile Signature Pad
+
+    </button>
+
+    <button
+        id="saveBtn"
+        class="primary-btn">
+
+        Save Sample
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- QR Modal -->
+
+<div
+    id="qrModal"
+    class="modal">
+
+    <div class="modal-content">
+
+        <h2>
+
+            Mobile Signature Pad
+
+        </h2>
+
+        <p>
+
+            Scan this QR code using your phone.
+
+        </p>
+
+        <div id="qrCode"></div>
+
+        <div class="modal-footer">
+
+            <button
+                id="closeQR"
+                class="secondary-btn">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<button
+    id="registerBtn"
+    class="primary-btn"
+    disabled>
+
+    Register Customer
+
+</button>
+
+<br><br>
+
+<a href="/">← Back to Dashboard</a>
+
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+
+</body>
+
+</html>

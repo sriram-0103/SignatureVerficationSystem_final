@@ -1,0 +1,249 @@
+/* ==========================================================
+   HISTORY PAGE
+========================================================== */
+
+.history-search{
+
+    margin:35px 0;
+
+}
+
+.history-input{
+
+    width:100%;
+
+    max-width:420px;
+
+    padding:16px 20px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.05);
+
+    color:var(--text);
+
+    font-size:16px;
+
+    outline:none;
+
+    transition:.3s;
+
+}
+
+.history-input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.history-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:24px;
+
+    margin:35px 0;
+
+}
+
+.history-stat-card{
+
+    background:rgba(30,41,59,.82);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:20px;
+
+    padding:28px;
+
+    text-align:center;
+
+}
+
+.history-stat-card h3{
+
+    color:var(--text-muted);
+
+    font-size:15px;
+
+    margin-bottom:15px;
+
+}
+
+.history-stat-card h2{
+
+    font-size:38px;
+
+    margin:0;
+
+    color:white;
+
+}
+
+.table-card{
+
+    background:rgba(30,41,59,.82);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
+    margin-top:30px;
+
+}
+
+.history-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.history-table thead{
+
+    background:rgba(37,99,235,.18);
+
+}
+
+.history-table th{
+
+    padding:20px;
+
+    text-align:left;
+
+    font-size:14px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.history-table td{
+
+    padding:18px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.history-table tbody tr{
+
+    transition:.25s;
+
+}
+
+.history-table tbody tr:hover{
+
+    background:rgba(255,255,255,.04);
+
+}
+
+.badge-auth,
+.badge-forgery,
+.badge-review{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:100px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.badge-auth{
+
+    background:#16a34a;
+
+    color:white;
+
+}
+
+.badge-forgery{
+
+    background:#dc2626;
+
+    color:white;
+
+}
+
+.badge-review{
+
+    background:#ca8a04;
+
+    color:white;
+
+}
+
+.pdf-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.pdf-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+@media(max-width:1100px){
+
+    .history-stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .history-stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .history-table{
+
+        display:block;
+
+        overflow-x:auto;
+
+    }
+
+}

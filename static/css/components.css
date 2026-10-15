@@ -1,0 +1,243 @@
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    margin-top:50px;
+
+    flex-wrap:wrap;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+    padding:18px 38px;
+
+    border-radius:16px;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:220px;
+
+}
+
+.primary-btn{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #3B82F6
+    );
+
+    color:white;
+
+    box-shadow:0 15px 30px rgba(37,99,235,.35);
+
+}
+
+.primary-btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.secondary-btn{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:white;
+
+}
+
+.secondary-btn:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-5px);
+
+}
+
+/* ==========================================================
+   HERO TITLE HIGHLIGHT
+========================================================== */
+
+.highlight{
+
+    background:linear-gradient(
+        90deg,
+        var(--accent),
+        var(--primary)
+    );
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    background-clip:text;
+
+    font-weight:800;
+
+}
+
+
+
+.authentic-icon{
+
+    background:linear-gradient(
+        135deg,
+        #22C55E,
+        #16A34A
+    );
+
+}
+
+.forgery-icon{
+
+    background:linear-gradient(
+        135deg,
+        #EF4444,
+        #DC2626
+    );
+
+}
+
+.report-icon{
+
+    background:linear-gradient(
+        135deg,
+        #F59E0B,
+        #D97706
+    );
+
+}
+
+.workspace-tag{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border-radius:100px;
+
+    background:rgba(37,99,235,.15);
+
+    color:var(--accent);
+
+    border:1px solid rgba(56,189,248,.35);
+
+    font-size:13px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.status-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 22px;
+
+    background:rgba(30,41,59,.85);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(16px);
+
+}
+
+.status-card strong{
+
+    display:block;
+
+    color:var(--text);
+
+}
+
+.status-card small{
+
+    color:var(--text-muted);
+
+}
+
+
+
+.status-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.status-dot.online{
+
+    background:var(--success);
+
+    box-shadow:0 0 14px var(--success);
+
+}
+
+/* Hero Button */
+
+.primary-btn{
+
+    font-size:18px;
+
+    padding:20px 42px;
+
+    min-width:340px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.btn-arrow{
+
+    transition:.3s;
+
+}
+
+.primary-btn:hover .btn-arrow{
+
+    transform:translateX(8px);
+
+}

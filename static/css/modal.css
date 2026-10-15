@@ -1,0 +1,83 @@
+/*
+=========================================================
+MODAL
+Version : 1.0
+Status  : LOCKED
+=========================================================
+*/
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(4px);
+
+    z-index:9999;
+
+}
+
+.modal.show{
+
+    display:flex;
+
+}
+
+.modal-content{
+
+    background:#ffffff;
+
+    width:380px;
+
+    max-width:92vw;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    text-align:center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.25);
+
+}
+
+.modal-content h2{
+
+    color:#163760;
+
+    margin-bottom:20px;
+
+}
+
+.modal-footer{
+
+    margin-top:20px;
+
+}
+
+.modal-footer button{
+
+    width:100%;
+
+}
+
+#qrCode{
+
+    width:220px;
+
+    height:220px;
+
+    margin:20px auto;
+
+}

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Verify Signature</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/modal.css') }}">
+
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/qr_modal.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <section class="workspace-header">
+
+    <div class="workspace-title">
+
+        <span class="workspace-tag">
+
+            AI SIGNATURE VERIFICATION
+
+        </span>
+
+        <h1>
+
+            Signature Forgery Detection using
+            <span class="highlight">
+                Temporal Stroke Analysis
+            </span>
+
+        </h1>
+
+        <p>
+
+            Verify handwritten signatures using Random Forest classification,
+            temporal stroke analysis, and similarity matching.
+
+        </p>
+
+    </div>
+
+    <div class="workspace-status">
+
+        <div class="status-card">
+
+            <div class="status-dot online"></div>
+
+            <div>
+
+                <strong>Verification Engine</strong>
+
+                <small>Ready</small>
+
+            </div>
+
+        </div>
+
+        <div class="status-card">
+
+            <div class="status-dot online"></div>
+
+            <div>
+
+                <strong>AI Model</strong>
+
+                <small>Random Forest Loaded</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="customer-panel">
+
+        <label>Account Number</label>
+
+        <div class="input-group">
+
+            <input
+                type="text"
+                id="accountNumber"
+                placeholder="Enter Account Number">
+
+            <button
+    id="loadBtn"
+    class="primary-btn">
+
+    Load Customer
+
+</button>
+
+        </div>
+
+        <br>
+
+        <div class="customer-status-grid">
+
+    <div class="info-box">
+
+        <span class="info-label">
+
+            Customer
+
+        </span>
+
+        <h3 id="customerName">
+
+            Not Loaded
+
+        </h3>
+
+    </div>
+
+    <div class="info-box">
+
+        <span class="info-label">
+
+            Verification Status
+
+        </span>
+
+        <h3 id="status">
+
+            Waiting
+
+        </h3>
+
+    </div>
+
+</div>
+
+        </div>
+
+<div class="signature-panel">
+
+    <h2>
+
+        Signature Verification
+
+    </h2>
+
+    <p>
+
+        Draw the test signature below for AI verification.
+
+    </p>
+
+        <canvas
+            id="verifyCanvas"
+            width="700"
+            height="250">
+        </canvas>
+
+        <div class="buttons">
+
+    <button
+        id="clearBtn"
+        class="secondary-btn">
+
+        Clear Signature
+
+    </button>
+
+    <button
+        id="mobilePadBtn"
+        class="secondary-btn">
+
+        📱 Use Mobile Signature Pad
+
+    </button>
+
+    <button
+        id="verifyBtn"
+        class="primary-btn"
+        disabled>
+
+        Verify Signature
+
+    </button>
+
+</div>
+
+<!-- QR Modal -->
+
+<div id="qrModal" class="modal">
+
+    <div class="modal-content">
+
+        <h2>Mobile Signature Pad</h2>
+
+        <p>Scan this QR code using your phone.</p>
+
+        <div id="qrCode"></div>
+
+        <div class="modal-footer">
+
+            <button
+                id="closeQR"
+                class="secondary-btn">
+
+                Close
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+    </div>
+
+    <!-- ================= RESULT CARD ================= -->
+
+    <div class="analysis-panel">
+
+<div
+    class="result-card"
+        id="resultCard"
+        style="display:none;">
+
+        <div class="result-header">
+
+    <h2>
+
+        AI Verification Result
+
+    </h2>
+
+    <div id="decisionValue" class="decision-badge">
+
+        Waiting
+
+    </div>
+
+</div>
+
+        <div class="analysis-grid">
+
+    <div class="analysis-item">
+
+        <span>Confidence</span>
+
+        <strong id="confidenceValue">-</strong>
+
+        <div class="meter">
+
+            <div id="confidenceBar" class="meter-fill"></div>
+
+        </div>
+
+    </div>
+
+    <div class="analysis-item">
+
+        <span>Similarity</span>
+
+        <strong id="similarityValue">-</strong>
+
+        <div class="meter">
+
+            <div id="similarityBar" class="meter-fill"></div>
+
+        </div>
+
+    </div>
+
+    <div class="analysis-item">
+
+        <span>Risk Level</span>
+
+        <strong id="riskValue">-</strong>
+
+    </div>
+
+    <div class="analysis-item">
+
+        <span>AI Model</span>
+
+        <strong>Random Forest</strong>
+
+    </div>
+
+</div>
+
+        <br>
+
+        <div class="section-title">
+
+    <h2>
+
+        Feature Comparison
+
+    </h2>
+
+    <p>
+
+        Comparison between enrolled and submitted signature features.
+
+    </p>
+
+</div>
+
+        <table
+            class="comparison-table"
+            id="comparisonTable">
+
+            <thead>
+
+                <tr>
+
+<th>Feature</th>
+
+<th>Reference</th>
+
+<th>Test</th>
+
+<th>Status</th>
+
+</tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+        <br>
+
+        <div class="chart-card">
+
+    <canvas
+        id="comparisonChart"
+        height="120">
+    </canvas>
+
+</div>
+
+        <br>
+<hr>
+
+<div class="analysis-card">
+
+    <div class="section-title">
+
+        <h2>
+
+            AI Explanation
+
+        </h2>
+
+        <p>
+
+            Machine learning explanation of the verification result.
+
+        </p>
+
+    </div>
+
+    <ul id="analysisList">
+
+        <li>Waiting for verification...</li>
+
+    </ul>
+
+</div>
+
+<br>
+
+        <div class="pdf-section">
+
+    <button
+        id="pdfBtn"
+        class="primary-btn">
+
+        Download Verification Report
+
+    </button>
+
+</div>
+
+    </div>
+
+</div>
+
+<br>
+
+<a href="/dashboard" class="secondary-btn">
+
+← Back to Workspace
+
+</a>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script src="{{ url_for('static', filename='js/verify.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</body>
+
+</html>

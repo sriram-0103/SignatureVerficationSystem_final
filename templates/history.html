@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Verification History</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+<section class="workspace-header">
+
+    <div class="workspace-title">
+
+        <span class="workspace-tag">
+
+            VERIFICATION HISTORY
+
+        </span>
+
+        <h1>
+
+            Signature Verification
+            <span class="highlight">
+
+                History
+
+            </span>
+
+        </h1>
+
+        <p>
+
+            Browse previous verification reports, search records and download forensic PDF reports.
+
+        </p>
+
+    </div>
+
+    <div class="workspace-status">
+
+        <div class="status-card">
+
+            <div class="status-dot online"></div>
+
+            <div>
+
+                <strong>History Database</strong>
+
+                <small>Connected</small>
+
+            </div>
+
+        </div>
+
+        <div class="status-card">
+
+            <div class="status-dot online"></div>
+
+            <div>
+
+                <strong>Reports</strong>
+
+                <small>Available</small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<div class="history-search">
+
+    <input
+    class="history-input"
+        type="text"
+        id="searchBox"
+        placeholder="Search Customer / Account Number"
+        style="
+            width:350px;
+            padding:10px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size:16px;
+        ">
+
+</div>
+
+<div class="history-stats">
+
+    <div class="history-stat-card">
+        <h3>Total Verifications</h3>
+        <h2 id="totalCount">0</h2>
+    </div>
+
+    <div class="history-stat-card">
+        <h3>Authentic</h3>
+        <h2 id="authCount">0</h2>
+    </div>
+
+    <div class="history-stat-card">
+        <h3>Human Verification</h3>
+        <h2 id="reviewCount">0</h2>
+    </div>
+
+</div>
+
+<div class="table-card">
+
+<table class="history-table">
+
+<thead>
+
+<tr>
+
+<th>Customer</th>
+
+<th>Account Number</th>
+
+<th>Decision</th>
+
+<th>Confidence</th>
+
+<th>Date</th>
+
+<th>PDF</th>
+
+</tr>
+
+</thead>
+
+<tbody id="historyTable">
+
+</tbody>
+
+</table>
+
+</div>
+
+<div style="margin-top:35px;text-align:center;">
+
+    <a
+        href="/dashboard"
+        class="secondary-btn">
+
+        ← Back to Workspace
+
+    </a>
+
+</div>
+
+</div>
+
+<script>
+
+    let historyData = [];
+
+async function loadHistory(){
+
+    const response = await fetch("/get_history");
+
+    const data = await response.json();
+
+    historyData = data;
+
+    const table = document.getElementById("historyTable");
+
+    let authentic = 0;
+let forgery = 0;
+let review = 0;
+
+    table.innerHTML = "";
+
+    data.forEach(item=>{
+
+        if(item.decision === "Authentic")
+    authentic++;
+
+else if(item.decision === "Forgery")
+    forgery++;
+
+else
+    review++;
+
+        let badge="badge-review";
+
+        if(item.decision==="Authentic")
+            badge="badge-auth";
+
+        if(item.decision==="Forgery")
+            badge="badge-forgery";
+
+        table.innerHTML += `
+        <tr>
+
+            <td>${item.customer_name}</td>
+
+            <td>${item.account_number}</td>
+
+            <td>
+                <span class="${badge}">
+                    ${item.decision}
+                </span>
+            </td>
+
+            <td>${item.confidence.toFixed(2)}%</td>
+
+            <td>${item.verification_time}</td>
+
+            <td>
+
+                <a class="pdf-btn"
+                   href="/${item.report_path}"
+                   target="_blank">
+
+                    Open PDF
+
+                </a>
+
+            </td>
+
+        </tr>
+        `;
+
+    });
+
+    document.getElementById("totalCount").innerHTML =
+    data.length;
+
+document.getElementById("authCount").innerHTML =
+    authentic;
+
+document.getElementById("forgeryCount").innerHTML =
+    forgery;
+
+document.getElementById("reviewCount").innerHTML =
+    review;
+
+}
+
+loadHistory();
+
+document.getElementById("searchBox").addEventListener("keyup", function(){
+
+    const keyword =
+        this.value.toLowerCase();
+
+    const rows =
+        document.querySelectorAll("#historyTable tr");
+
+    rows.forEach(row=>{
+
+        if(
+            row.innerText.toLowerCase().includes(keyword)
+        ){
+
+            row.style.display="";
+
+        }
+
+        else{
+
+            row.style.display="none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+
+</html>

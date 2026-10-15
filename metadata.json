@@ -1,0 +1,18 @@
+{
+    "model": "Random Forest",
+    "version": "2.0",
+    "dataset": "SVC2004 Task1 + Task2",
+    "features": 63,
+    "training_samples": 2560,
+    "testing_samples": 640,
+    "accuracy": 0.9140625,
+    "best_parameters": {
+        "rf__n_estimators": 300,
+        "rf__min_samples_split": 4,
+        "rf__min_samples_leaf": 3,
+        "rf__max_features": "sqrt",
+        "rf__max_depth": 20,
+        "rf__bootstrap": false
+    },
+    "random_state": 42
+}

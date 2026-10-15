@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Mobile Signature Pad</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/mobile_signature.css') }}">
+
+</head>
+
+<body>
+
+<!-- Portrait Warning -->
+
+<div id="rotateScreen" class="rotate-screen">
+
+    <div class="rotate-content">
+
+        <div class="rotate-icon">📱↻</div>
+
+        <h2>Rotate Your Device</h2>
+
+        <p>
+
+            Please use Landscape Mode
+            for signature capture.
+
+        </p>
+
+    </div>
+
+</div>
+
+<!-- Signature Pad -->
+
+<div id="signatureApp" class="mobile-app">
+
+    <header class="mobile-header">
+
+
+        <button
+    id="clearBtn"
+    class="secondary-btn">
+
+    🗑 Clear
+
+</button>
+
+<div
+    class="page-title"
+    id="pageTitle">
+
+    Signature Pad
+
+</div>
+
+<button
+    id="actionBtn"
+    class="primary-btn">
+
+    ✓ Done
+
+</button>
+
+
+    </header>
+
+    <main class="mobile-main">
+
+        <canvas id="mobileCanvas"></canvas>
+
+    </main>
+
+
+</div>
+
+<script src="{{ url_for('static', filename='js/mobile_signature.js') }}"></script>
+
+</body>
+
+</html>
